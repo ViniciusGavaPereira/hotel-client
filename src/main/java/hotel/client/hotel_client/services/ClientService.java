@@ -18,4 +18,8 @@ public class ClientService {
         return clientRepository.findAll();
     }
 
+    public List<Client> findByName(String name) {
+        return clientRepository.findByNameContaining(name);
+    }
+
 }
