@@ -45,4 +45,8 @@ public class ClientService {
         return client;
     }
 
+    public void deleteById(Integer id) {
+        clientRepository.deleteById(id);
+    }
+
 }

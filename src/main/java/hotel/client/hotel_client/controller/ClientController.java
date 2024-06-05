@@ -5,6 +5,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,7 +57,7 @@ public class ClientController {
                 HttpStatus.CREATED);
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<ClientDto> updateClient(@PathVariable Integer id, @RequestBody Client client) {
 
         try {
@@ -68,6 +69,12 @@ public class ClientController {
 
         }
 
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<?> deleteClient(@PathVariable Integer id) {
+        clientService.deleteById(id);
+        return new ResponseEntity<>("Product was deleted", HttpStatus.ACCEPTED);
     }
 
 }
