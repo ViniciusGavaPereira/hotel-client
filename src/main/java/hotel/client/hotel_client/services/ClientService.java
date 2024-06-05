@@ -26,4 +26,9 @@ public class ClientService {
         return clientRepository.findByCpf(cpf);
     }
 
+    public Client createClient(Client client) {
+
+        return clientRepository.save(client);
+    }
+
 }

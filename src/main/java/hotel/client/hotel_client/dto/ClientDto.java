@@ -35,7 +35,7 @@ public class ClientDto {
 
     @Override
     public String toString() {
-        return "ClientDto [name=" + name + ", cpf=" + cpf + "]";
+        return "ClientDto\nName: " + name + "\nCpf: " + cpf;
     }
 
     public static List<ClientDto> inventoryConverter(List<Client> client) {

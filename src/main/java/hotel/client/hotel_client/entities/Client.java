@@ -24,8 +24,7 @@ public class Client {
     public Client() {
     }
 
-    public Client(Integer id, String name, String cpf) {
-        this.id = id;
+    public Client(String name, String cpf) {
         this.name = name;
         this.cpf = cpf;
     }

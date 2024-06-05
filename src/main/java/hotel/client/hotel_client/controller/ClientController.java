@@ -14,6 +14,8 @@ import hotel.client.hotel_client.entities.Client;
 import java.util.List;
 
 import hotel.client.hotel_client.services.ClientService;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RestController
@@ -40,6 +42,15 @@ public class ClientController {
     public ResponseEntity<List<ClientDto>> findByCpf(@PathVariable String cpf) {
         List<Client> result = clientService.findByCpf(cpf);
         return new ResponseEntity<List<ClientDto>>(ClientDto.inventoryConverter(result), HttpStatus.OK);
+    }
+
+    @PostMapping("/create/v1/")
+    public ResponseEntity<?> createClient(@RequestBody Client clientInput) {
+
+        clientService.createClient(clientInput);
+
+        return new ResponseEntity<>(new ClientDto(clientInput).toString(),
+                HttpStatus.CREATED);
     }
 
 }
