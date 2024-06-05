@@ -45,8 +45,13 @@ public class ClientService {
         return client;
     }
 
-    public void deleteById(Integer id) {
+    public Client deleteById(Integer id) {
+        Client client = clientRepository.findById(id)
+                .orElseThrow(() -> new CustomApplicationException("Client not found", HttpStatus.NOT_FOUND));
+
         clientRepository.deleteById(id);
+        return client;
+
     }
 
 }

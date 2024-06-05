@@ -74,7 +74,7 @@ public class ClientController {
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<?> deleteClient(@PathVariable Integer id) {
         clientService.deleteById(id);
-        return new ResponseEntity<>("Product was deleted", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Client was deleted", HttpStatus.ACCEPTED);
     }
 
 }
