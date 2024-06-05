@@ -6,6 +6,7 @@ import hotel.client.hotel_client.entities.Client;
 
 public class ClientDto {
 
+    private Integer id;
     private String name;
     private String cpf;
 
@@ -13,8 +14,17 @@ public class ClientDto {
     }
 
     public ClientDto(Client client) {
+        id = client.getId();
         name = client.getName();
         cpf = client.getCpf();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -35,7 +45,7 @@ public class ClientDto {
 
     @Override
     public String toString() {
-        return "ClientDto\nName: " + name + "\nCpf: " + cpf;
+        return "ClientDto\nId: " + id + "\nName: " + name + "\nCpf: " + cpf;
     }
 
     public static List<ClientDto> inventoryConverter(List<Client> client) {
