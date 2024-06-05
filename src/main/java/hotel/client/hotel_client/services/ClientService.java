@@ -22,4 +22,8 @@ public class ClientService {
         return clientRepository.findByNameContaining(name);
     }
 
+    public List<Client> findByCpf(String cpf) {
+        return clientRepository.findByCpf(cpf);
+    }
+
 }

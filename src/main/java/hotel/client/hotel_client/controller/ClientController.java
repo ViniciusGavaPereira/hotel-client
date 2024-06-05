@@ -30,9 +30,15 @@ public class ClientController {
         return ClientDto.inventoryConverter(result);
     }
 
-    @GetMapping("/person/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity<List<ClientDto>> findByName(@PathVariable String name) {
         List<Client> result = clientService.findByName(name);
+        return new ResponseEntity<List<ClientDto>>(ClientDto.inventoryConverter(result), HttpStatus.OK);
+    }
+
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<List<ClientDto>> findByCpf(@PathVariable String cpf) {
+        List<Client> result = clientService.findByCpf(cpf);
         return new ResponseEntity<List<ClientDto>>(ClientDto.inventoryConverter(result), HttpStatus.OK);
     }
 
