@@ -48,7 +48,7 @@ public class ClientDto {
         return "ClientDto\nId: " + id + "\nName: " + name + "\nCpf: " + cpf;
     }
 
-    public static List<ClientDto> inventoryConverter(List<Client> client) {
+    public static List<ClientDto> clientConverter(List<Client> client) {
         return client.stream().map(ClientDto::new).collect(Collectors.toList());
     }
 

@@ -33,19 +33,19 @@ public class ClientController {
     public List<ClientDto> findAll() {
 
         List<Client> result = clientService.findAll();
-        return ClientDto.inventoryConverter(result);
+        return ClientDto.clientConverter(result);
     }
 
     @GetMapping("/name/{name}")
     public ResponseEntity<List<ClientDto>> findByName(@PathVariable String name) {
         List<Client> result = clientService.findByName(name);
-        return new ResponseEntity<List<ClientDto>>(ClientDto.inventoryConverter(result), HttpStatus.OK);
+        return new ResponseEntity<List<ClientDto>>(ClientDto.clientConverter(result), HttpStatus.OK);
     }
 
     @GetMapping("/cpf/{cpf}")
     public ResponseEntity<List<ClientDto>> findByCpf(@PathVariable String cpf) {
         List<Client> result = clientService.findByCpf(cpf);
-        return new ResponseEntity<List<ClientDto>>(ClientDto.inventoryConverter(result), HttpStatus.OK);
+        return new ResponseEntity<List<ClientDto>>(ClientDto.clientConverter(result), HttpStatus.OK);
     }
 
     @PostMapping("/create/v1/")
