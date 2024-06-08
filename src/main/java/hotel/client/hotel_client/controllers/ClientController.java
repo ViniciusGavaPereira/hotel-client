@@ -1,4 +1,4 @@
-package hotel.client.hotel_client.controller;
+package hotel.client.hotel_client.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
