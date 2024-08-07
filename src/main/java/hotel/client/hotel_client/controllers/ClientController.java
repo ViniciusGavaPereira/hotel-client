@@ -15,6 +15,7 @@ import exception.CustomApplicationException;
 import hotel.client.hotel_client.dto.ClientDto;
 import hotel.client.hotel_client.entities.Client;
 import java.util.List;
+import java.util.Optional;
 
 import hotel.client.hotel_client.services.ClientService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,9 +44,9 @@ public class ClientController {
     }
 
     @GetMapping("/cpf/{cpf}")
-    public ResponseEntity<List<ClientDto>> findByCpf(@PathVariable String cpf) {
-        List<Client> result = clientService.findByCpf(cpf);
-        return new ResponseEntity<List<ClientDto>>(ClientDto.clientConverter(result), HttpStatus.OK);
+    public ResponseEntity<ClientDto> findByCpf(@PathVariable String cpf) {
+        ClientDto result = clientService.findByCpf(cpf);
+        return new ResponseEntity<ClientDto>(result), HttpStatus.OK);
     }
 
     @PostMapping("/create/v1/")

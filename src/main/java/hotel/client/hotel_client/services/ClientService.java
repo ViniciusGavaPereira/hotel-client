@@ -1,13 +1,16 @@
 package hotel.client.hotel_client.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import exception.CustomApplicationException;
 import hotel.client.hotel_client.repositories.ClientRepository;
+import hotel.client.hotel_client.dto.ClientDto;
 import hotel.client.hotel_client.entities.Client;
 
 @Service
@@ -24,8 +27,15 @@ public class ClientService {
         return clientRepository.findByNameContaining(name);
     }
 
-    public List<Client> findByCpf(String cpf) {
-        return clientRepository.findByCpf(cpf);
+    public ClientDto findByCpf(String cpf) {
+        Optional<Client> result = clientRepository.findByCpf(cpf);
+        if (result.isPresent()) {
+            ClientDto clientDto = new ClientDto(result.get());
+            return clientDto;
+        } else {
+            throw new CustomApplicationException("Client with CPF " + cpf + " not found", HttpStatus.NOT_FOUND);
+        }
+
     }
 
     public Client createClient(Client client) {

@@ -5,12 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import hotel.client.hotel_client.entities.Client;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer> {
 
     List<Client> findByNameContaining(String name);
 
-    List<Client> findByCpf(String cpf);
+    Optional<Client> findByCpf(String cpf);
 
 }
