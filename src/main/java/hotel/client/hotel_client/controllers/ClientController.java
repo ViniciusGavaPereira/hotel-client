@@ -46,7 +46,7 @@ public class ClientController {
     @GetMapping("/cpf/{cpf}")
     public ResponseEntity<ClientDto> findByCpf(@PathVariable String cpf) {
         ClientDto result = clientService.findByCpf(cpf);
-        return new ResponseEntity<ClientDto>(result), HttpStatus.OK);
+        return new ResponseEntity<ClientDto>(result, HttpStatus.OK);
     }
 
     @PostMapping("/create/v1/")
